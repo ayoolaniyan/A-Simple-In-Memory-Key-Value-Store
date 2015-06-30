@@ -10,6 +10,8 @@
 
 -define(DEFAULT_PORT2, 1156).
 
+-define(DEFAULT_PORT3, 4000).
+
 
 %%%===================================================================
 %%% e2_application callbacks
@@ -20,7 +22,9 @@
 			{im_store_client_handler_sup, [supervisor]},
 			{im_store_server, start_link, [server_port()]},
 			{im_store_http_server, start_link, [server_port2()]},
-			{im_store_http_server_client_sup, [supervisor]}			
+			{im_store_http_server_client_sup, [supervisor]},
+			{im_store_udp_server, init, [server_port3()]},
+			{im_store_udp_client_sup, start_link, [supervisor]}
 		]}.
 
 %%%===================================================================
@@ -35,6 +39,9 @@
 		
 	server_port2() ->
 		app_config(server_port2, ?DEFAULT_PORT2).
+		
+	server_port3() ->
+		app_config(server_port3, ?DEFAULT_PORT3).
 		
 	app_config(Name, Default) ->
     handle_app_env(application:get_env(Name), Default).
