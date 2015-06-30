@@ -1,0 +1,9 @@
+%% -*- erlang -*-
+{application, im_store_http,
+ [{description, "im_store_http app"},
+  {vsn, "1"},
+  {modules, []},
+  {registered, []},
+  {mod, {e2_application, [im_store_http_app]}},
+  {env, []},
+  {applications, [kernel, stdlib]}]}.
