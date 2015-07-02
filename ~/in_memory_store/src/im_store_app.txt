@@ -21,7 +21,8 @@
 		{ok, [{im_store_data, start_link, [db_file()]},
 			{im_store_client_handler_sup, [supervisor]},
 			{im_store_server, start_link, [server_port()]},
-			{im_store_http_server, start_link, [server_port2(), [], null]},
+			%%{im_store_http_server, start_link, [server_port2()]},
+			{im_store_http_server_sup, [supervisor]},
 			{im_store_udp_server, init, [server_port3()]},
 			{im_store_udp_client_sup, start_link, [supervisor]}
 		]}.
