@@ -4,12 +4,12 @@
 
 -export([start_link/2, start_link/3]).
 
--export([init/0, handle_task/3, separate_path_parts/2, extract_params/1, send_html_message/2, send_plaintext_message/2, send_message/5]).
+-export([init/0, handle_task/3, separate_path_parts/2, extract_params/1, send_html_message/2, send_plaintext_message/2, send_message/5, read_body/3]).
 
 
 	init() ->
-		Port = 1156,
-		e2_task:start_link(?MODULE, Port).
+		Port = 8000,
+		e2_task:start_link(?MODULE, Port, [], null).
 		
 	start_link(Port, Functions) ->
 		start_link(Port, Functions, null).
