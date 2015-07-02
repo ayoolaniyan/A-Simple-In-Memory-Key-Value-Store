@@ -1,4 +1,11 @@
-
+Running the Program:
+Open cmd terminal from in_memory_store directory
+and run ...
+make
+then...
+make shell
+then start the program by...
+application:start(im_store).
 
 Querying DB:
 > im_store_data:del("msg").
@@ -65,14 +72,7 @@ Connection closed.
 
 Testing the HTTP Interface:
 
-Type this on Erlang Shell:
-GetFunction=fun(Sock, PathString, QueryString, Params, Fragment, Headers, Body)-> 
-		      		  gen_tcp:send(Sock, "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=UTF-8\r\nConnection: close\r\n\r\nHelo World!\r\n\r\n") 
-		      end.
-
-Functions=[{'GET', GetFunction}].
-
-im_store_http_server:start_link(8000, Functions).
+Type this on Erlang shell: im_store_http_server_test:start_harness(8000).
 
 
 Then on Another CMD Terminal:
@@ -112,3 +112,14 @@ curl -v  -X DELETE "127.0.0.1:8000/foo/abr?x=y&x=u&bar=foo"
 DELETE is not supported by this service.
 
 * Closing connection 0
+
+
+You can also Test the HTTP Interface manually by:
+Type this on Erlang Shell:
+GetFunction=fun(Sock, PathString, QueryString, Params, Fragment, Headers, Body)-> 
+		      		  gen_tcp:send(Sock, "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=UTF-8\r\nConnection: close\r\n\r\nHelo World!\r\n\r\n") 
+		      end.
+
+Functions=[{'GET', GetFunction}].
+
+im_store_http_server:start_link(8000, Functions).
