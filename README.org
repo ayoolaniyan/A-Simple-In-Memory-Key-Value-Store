@@ -1,11 +1,17 @@
 
 Running the Program:
 Open cmd terminal from in_memory_store directory
+
 and run ...
+
 make
+
 then...
+
 make shell
+
 then start the program by...
+
 application:start(im_store).
 
 Querying DB:
@@ -44,9 +50,6 @@ ok
 
 > mydb_db:get(Db, "msg").
 []
-
-
-
 
 
 
