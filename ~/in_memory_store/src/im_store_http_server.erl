@@ -4,7 +4,7 @@
 
 -export([start_link/2, start_link/3]).
 
--export([init/0, handle_task/3, separate_path_parts/2, extract_params/1, send_html_message/2, send_plaintext_message/2, send_message/5, read_body/3]).
+-export([init/0, handle_task/3, another_path_parts/2, extract_params/1, send_html_message/2, send_plaintext_message/2, send_message/5, read_body/3]).
 
 
 	init() ->
@@ -56,14 +56,14 @@
 
 
 				  
-		separate_path_parts(Path, Token)->
+		another_path_parts(Path, Token)->
 			PartList=string:tokens(Path, Token),
 			[PathString|Part]=PartList,
 			{PathString,lists:flatten(Part)}.
 		 
 		handle_path(Path)->
-			{PathStringWithQuery, Fragment}=separate_path_parts(Path, "#"),
-			{PathString, QueryString}=separate_path_parts(Path, "?"),
+			{PathStringWithQuery, Fragment}=another_path_parts(Path, "#"),
+			{PathString, QueryString}=another_path_parts(Path, "?"),
 			Params=extract_params(QueryString),
 			{PathString, QueryString, Params, Fragment}.
 			
@@ -146,7 +146,7 @@
 			end.
 
 
-		%% taking this from inets/http_uri cause I can't seem to figure out import/export
+		%% taking this from inets/http_uri 
 
 
 		decode(String) ->
